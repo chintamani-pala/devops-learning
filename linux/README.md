@@ -357,9 +357,15 @@
     ```
     sudo useradd -m dev_user
     ```
+    OR
+    ```
+    sudo adduser dev_user
+    ```
     - Here `sudo` means `super user do`
-    - Here `useradd` means `adding a new user`
+    - Here `useradd` or `adduser` means `adding a new user`
     - Here `-m` means `create a new home directory`
+    - `useradd` is a quick command to create user. using in shell script.
+    - `adduser` is create home directory bydefault and asking more informations
     #### want to see all users?
         cat /etc/passwd
 52. Set password for `dev_user`.
@@ -440,34 +446,32 @@
 
 ---
 
-## 🔵 LEVEL 7: Process Management
+## 🔵 LEVEL 7: Networking
 
-61. Show all running processes.
-62. Show processes for a specific user.
-63. Find PID of `sshd`.
-64. Kill a process using PID.
-65. Kill a process by name.
-66. Show real-time process usage.
-67. Run a command in background.
-68. Bring a background job to foreground.
-69. Change priority of a running process.
-70. Find top 5 CPU consuming processes.
+61. Display IP address.
+62. Check if google.com is reachable.
+63. Show all listening ports.
+64. Find which process is using port 8080.
+65. Download a file from internet.
+66. Display DNS information.
+67. Check active network connections.
+68. SSH into a remote server.
+69. Copy file to remote server.
+70. Test open port on remote server.
 
 ---
+## 🔵 LEVEL 8: Process Management
 
-## 🔵 LEVEL 8: Networking
-
-71. Display IP address.
-72. Check if google.com is reachable.
-73. Show all listening ports.
-74. Find which process is using port 8080.
-75. Download a file from internet.
-76. Display DNS information.
-77. Check active network connections.
-78. SSH into a remote server.
-79. Copy file to remote server.
-80. Test open port on remote server.
-
+71. Show all running processes.
+72. Show processes for a specific user.
+73. Find PID of `sshd`.
+74. Kill a process using PID.
+75. Kill a process by name.
+76. Show real-time process usage.
+77. Run a command in background.
+78. Bring a background job to foreground.
+79. Change priority of a running process.
+80. Find top 5 CPU consuming processes.
 ---
 
 ## 🔴 LEVEL 9: Disk & Memory
