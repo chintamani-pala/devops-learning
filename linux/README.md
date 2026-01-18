@@ -284,30 +284,159 @@
 ## 🟡 LEVEL 5: Permissions & Ownership
 
 41. Check file permissions.
+    ```
+    ls -l
+    ```
 42. Give **read, write, execute** permission to owner only.
+    ```
+    chmod 700 filename
+    ```
+    - Here `chmod` is used for change permission of a file. 
+    - Here first `7` is for owner, second `0` is for groups, third `0` is for other users.
+
 43. Give execute permission to everyone.
+    ```
+    chmod a+x filename
+    ```
+    - Here `chmod` is used for change permission of a file. 
+    - Here `a` is for `all users` 
+    - Here `+` means `Add` this permission without removing existing ones
+    - Here `x` means `execute` permission
 44. Remove write permission from group.
+    ```
+    chmod g-w filename
+    ```
+    - Here `chmod` is used for change permission of a file. 
+    - Here `g` is for `group` 
+    - Here `-` means `remove` this permission without removing existing ones
+    - Here `w` means `write` permission
 45. Change file owner to `root`.
+    ```
+    sudo chown root filename 
+    ```
+    - Here `sudo` means `super user do`
+    - Here `chown` means `change ownership`
+    - Here `root` means username
 46. Change group ownership.
-47. Find files with **SUID bit** set.
+    ```
+    sudo chgrp groupname filename
+    ```
+    - Here `sudo` means `super user do`
+    - Here  `chgrp` means `change group`  
+47. Create a New Group
+    ```
+    sudo groupadd group_name
+    ```
+    - Here `sudo` means `super user do`
+    - Here `groupadd` used for `adding a new group`
 48. Explain output of `ls -l` (by practice).
+    ```
+    total 5
+    drwxr-xr-x 1 chint 197609  0 Jan 18 00:26 linux/
+    -rw-r--r-- 1 chint 197609 18 Jan 18 00:26 README.md
+    ```
 49. Set permission using numeric mode.
+    ```
+    chmod 777 filename
+    ```
+    - Here `7` means 111-> Read, write and execute
+    - Here `777` means Read, write, execute permission to 
+        - first 7 is for `owner`
+        - second 7 is for `group`
+        - third 7 is for `other users`
 50. Check default permission using `umask`.
+    ```
+    0022
+    ```
 
 ---
 
 ## 🟡 LEVEL 6: Users & Groups
 
 51. Create a user named `dev_user`.
+    ```
+    sudo useradd -m dev_user
+    ```
+    - Here `sudo` means `super user do`
+    - Here `useradd` means `adding a new user`
+    - Here `-m` means `create a new home directory`
+    #### want to see all users?
+        cat /etc/passwd
 52. Set password for `dev_user`.
+    ```
+    sudo passwd dev_user
+    ```
+    - Here `sudo` means `super user do`
+    - Here `passwd` means `Password`
 53. Create a group named `dev_team`.
+    ```
+    sudo groupadd dev_team
+    ```
+    - Here `groupadd` used for `adding a new group`
+    #### Want to see all groups?
+        getent group
+    
+    - Here `getent` means `get entries`
+        
 54. Add `dev_user` to `dev_team`.
+    ```
+    sudo usermod -aG dev_team dev_user
+    ```
+    - Here `sudo` means `Runs the command as root`
+    - Here `usermod` Means user modify
+    - Here `-a` means append
+    - Here `-G` means secondary (supplementary) groups
+    - `usermod -aG` safely appends a user to supplementary groups without affecting existing memberships. 
+    #### want to check ?
+        groups dev_user
 55. Switch to `dev_user`.
+    ```
+    su dev_user
+    ```
+    - Here `su` means `switch user`
+
+    OR
+    ```
+    su - dev_user
+    ```
+    - Here `su` means `switch user`
+    - Here `-` means loads full environment 
 56. Display current logged-in users.
+    ```
+    who
+    ```
 57. Show user ID and group ID.
+    ```
+    id dev_user | awk '{print $1,$2}'
+    ```
+    - Here `id` shows `identity information of a user`.
 58. Lock a user account.
+    ```
+    sudo passwd -l dev_user
+    ```
+    - Here `sudo` means Runs the command as root
+    - Here `passwd` means Manages user passwords and account state
+    - Here `-l` or `-L` means lock
+        - It prepends ! to the password hash in /etc/shadow
+        - Example:
+            - dev_user:$6$abc123...
+            - After lock:
+            - dev_user:!$6$abc123...
+            - This makes password authentication impossible.
 59. Delete a user without deleting home directory.
+    ```
+    sudo userdel dev_user
+    ```
+    - Here `sudo` means Runs the command as root
+    - Here `userdel` means `delete a user`
 60. List all users in the system.
+    ```
+    cat /etc/passwd
+    ```
+    OR
+    ```
+    getent passwd
+    ```
 
 ---
 
